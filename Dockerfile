@@ -4,10 +4,12 @@ ENV XBROWSERSYNC_API_VERSION 1.1.13
 
 WORKDIR /usr/src/api
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-RUN curl -SL https://github.com/xBrowserSync/api/archive/v$XBROWSERSYNC_API_VERSION.tar.gz \
-  | tar -xzC /usr/src/api /--strip-components=1 \
-  && curl -so healthcheck.js https://raw.githubusercontent.com/xbrowsersync/api-docker/v$XBROWSERSYNC_API_VERSION/healthcheck.js \
+RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBROWSERSYNC_API_VERSION.tar.gz \
+	&& tar -C . -xzf release.tar.gz \
+	&& rm release.tar.gz \
+	&& mv api-$XBROWSERSYNC_API_VERSION/* . \
+	&& rm -rf api-$XBROWSERSYNC_API_VERSION/ \
+  && wget -q https://raw.githubusercontent.com/xbrowsersync/api-docker/v$XBROWSERSYNC_API_VERSION/healthcheck.js \
   && npm install --only=production
 
 USER node
