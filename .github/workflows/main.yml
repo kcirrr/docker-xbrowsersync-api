@@ -87,6 +87,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+          fail_on_vulnerabilities: false
       -
         name: Build and push
         uses: docker/build-push-action@v2
