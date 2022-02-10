@@ -10,7 +10,7 @@ RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBRO
 	&& mv api-$XBROWSERSYNC_API_VERSION/* . \
 	&& rm -rf api-$XBROWSERSYNC_API_VERSION/ \
   && wget -q https://raw.githubusercontent.com/xbrowsersync/api-docker/v$XBROWSERSYNC_API_VERSION/healthcheck.js \
-  && install -d -m 0755 -g node logs \
+  && install -d -m 0775 -g node logs \
   && npm install --only=production
 
 USER node
