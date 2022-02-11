@@ -1,4 +1,4 @@
-FROM node:17.5.0-alpine3.15 
+FROM node:14.16.0-alpine
 
 ENV XBROWSERSYNC_API_VERSION 1.1.13
 
@@ -14,6 +14,5 @@ RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBRO
   && chmod g+w /var/log/ \
   && npm install --only=production
 
-USER node
 EXPOSE 8080
 CMD [ "node", "dist/api.js"]
