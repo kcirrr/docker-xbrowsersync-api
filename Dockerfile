@@ -1,4 +1,4 @@
-FROM node:14.16.0-alpine
+FROM node:17.7.1-alpine
 
 ENV XBROWSERSYNC_API_VERSION 1.1.13
 
