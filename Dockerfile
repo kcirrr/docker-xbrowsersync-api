@@ -16,7 +16,7 @@ RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBRO
 FROM node:16.14-alpine3.15
 
 WORKDIR /usr/src/api
-RUN apk add --no-cache --upgrade libretls
+RUN apk upgrade --no-cache libretls
 COPY --from=build-env /usr/src/api /usr/src/api
 
 EXPOSE 8080
