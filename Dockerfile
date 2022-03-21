@@ -1,4 +1,4 @@
-FROM node:16.14 AS build-env
+FROM node:17.7.2 AS build-env
 
 ENV XBROWSERSYNC_API_VERSION 1.1.13
 
@@ -13,7 +13,7 @@ RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBRO
   && npm install --only=production
 
 
-FROM node:16.14-alpine3.15
+FROM node:17.7.2
 
 WORKDIR /usr/src/api
 RUN apk upgrade --no-cache libretls
