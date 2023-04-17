@@ -1,4 +1,4 @@
-FROM node:18.8.0 AS build-env
+FROM node:19.9.0 AS build-env
 
 ENV XBROWSERSYNC_API_VERSION 1.1.13
 
@@ -13,7 +13,7 @@ RUN wget -q -O release.tar.gz https://github.com/xBrowserSync/api/archive/v$XBRO
   && npm install --only=production
 
 
-FROM node:18.8.0
+FROM node:19.9.0
 
 WORKDIR /usr/src/api
 COPY --from=build-env /usr/src/api /usr/src/api
